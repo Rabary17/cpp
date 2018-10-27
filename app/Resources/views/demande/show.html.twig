@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Demande</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ demande.type }}</td>
+            </tr>
+            <tr>
+                <th>Typecarte</th>
+                <td>{{ demande.typeCarte }}</td>
+            </tr>
+            <tr>
+                <th>Numserie</th>
+                <td>{{ demande.numSerie }}</td>
+            </tr>
+            <tr>
+                <th>Demandeur</th>
+                <td>{{ demande.demandeur }}</td>
+            </tr>
+            <tr>
+                <th>Libelleserie</th>
+                <td>{{ demande.libelleSerie }}</td>
+            </tr>
+            <tr>
+                <th>Nombredemande</th>
+                <td>{{ demande.nombreDemande }}</td>
+            </tr>
+            <tr>
+                <th>Nombrerealise</th>
+                <td>{{ demande.nombreRealise }}</td>
+            </tr>
+            <tr>
+                <th>Nombreerreur</th>
+                <td>{{ demande.nombreErreur }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ demande.status }}</td>
+            </tr>
+            <tr>
+                <th>Realisateur</th>
+                <td>{{ demande.realisateur }}</td>
+            </tr>
+            <tr>
+                <th>Action</th>
+                <td>{{ demande.action }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if demande.date %}{{ demande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

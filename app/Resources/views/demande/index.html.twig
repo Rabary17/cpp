@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Demandes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Typecarte</th>
+                <th>Numserie</th>
+                <th>Demandeur</th>
+                <th>Libelleserie</th>
+                <th>Nombredemande</th>
+                <th>Nombrerealise</th>
+                <th>Nombreerreur</th>
+                <th>Status</th>
+                <th>Realisateur</th>
+                <th>Action</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td><a href="{{ path('demande_show', { 'id': demande.id }) }}">{{ demande.id }}</a></td>
+                <td>{{ demande.type }}</td>
+                <td>{{ demande.typeCarte }}</td>
+                <td>{{ demande.numSerie }}</td>
+                <td>{{ demande.demandeur }}</td>
+                <td>{{ demande.libelleSerie }}</td>
+                <td>{{ demande.nombreDemande }}</td>
+                <td>{{ demande.nombreRealise }}</td>
+                <td>{{ demande.nombreErreur }}</td>
+                <td>{{ demande.status }}</td>
+                <td>{{ demande.realisateur }}</td>
+                <td>{{ demande.action }}</td>
+                <td>{% if demande.date %}{{ demande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('demande_show', { 'id': demande.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_new') }}">Create a new demande</a>
+        </li>
+    </ul>
+{% endblock %}
